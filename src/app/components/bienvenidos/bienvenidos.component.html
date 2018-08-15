@@ -1,0 +1,130 @@
+<header>
+    <div class="container">
+        <div class="row">
+            <div class="col p-2">
+                <div class="cont-login p-2">
+                    <div class="content-login">
+                        <div class="texto-bienv p-3">
+                            <h4>Todas las ofertas de la ciudad al alcance de tú mano</h4>
+                        </div>
+                        <div *ngFor="let i of persona">
+                            <form class="container d-flex justify-content-center" (ngSubmit)="enviar()" #forma="ngForm">
+                                <div class="form-group p-2">
+                                    <input [(ngModel)]="i.correo" style="background-color:transparent;" name="correo" type="emailf" class="form-control" placeholder="Correo Electrónico" required>
+                                </div>
+                                <div class="form-group p-2">
+                                    <input [(ngModel)]="i.contrasena" style="background-color:transparent;" name="contrasena" type="password" class="form-control" placeholder="Contraseña" required>
+                                </div>
+                                <button style="background-color:transparent;" class="boton p-2" type="submit">Entrar</button>
+                            </form>
+                        </div>
+                    </div>
+                    <div>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="textos">
+                    <h1 class="titulo"> <img src="../../../assets/img/logo.png" alt="" height="50%" width="50%"></h1>
+                    <h3 class="subtitulo"></h3>
+                    <!-- <button routerLink="/registrarse" class="boton"> Regístrate... </button> -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="sesgoabajo"></div>
+</header>
+<main>
+    <section class="acerca-de">
+        <div class="contenedor">
+            <h2 class="sobre-nosotros"> Sobre nosotros </h2>
+            <h3 class="slogan">TuOfertApp</h3>
+            <p class="parrafo">Encuentra las mejores ofertas en Medellín Antioquia a través del portal TuOfertApp. Entérate de promociones y ofertas a tú alrededor, descubre increibles ofertas para hacer, ver, comer y comprar lo mejor de la ciudad con descuentos que ni
+                tú mismo lo imaginas. </p>
+        </div>
+    </section>
+    <section class="galeria">
+        <div class="sesgoarriba"></div>
+        <div class="imagenes">
+            <img src="assets/img/1.jpg" alt="">
+        </div>
+        <div class="imagenes">
+            <img src="assets/img/3.jpg" alt="">
+        </div>
+        <div class="imagenes">
+            <img src="assets/img/2.jpg" alt="">
+            <div class="encima">
+                <h2>TuOfertApp</h2>
+            </div>
+        </div>
+        <div class="imagenes">
+            <img src="assets/img/4.jpeg" alt="">
+
+        </div>
+        <div class="imagenes">
+            <img src="assets/img/Skewed.png" alt="">
+        </div>
+        <div class="sesgoabajo"></div>
+    </section>
+    <section class="miembros">
+        <div class="contenedor">
+            <h2 class="sobre-nosotros">Nuestro equipo</h2>
+            <h3 class="slogan">Conoce a nuestro equipo de trabajo</h3>
+            <div class="cards">
+                <div class="cardf" style="width: 18rem;">
+                    <img class="card-img-top" src="../../../assets/img/accenture-innovation-challenge-2017.png" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="text-center">ACCENTURE LTDA</h5>
+                    </div>
+                </div>
+                <div class="cardf" style="width: 18rem;">
+                    <img class="card-img-top" src="../../../assets/img/APOLO.jpeg" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="text-center">APOLO XI</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="fondo">
+        <div class="sesgoarriba"></div>
+        <div class="contenedor">
+            <h2 class="titulo-patrocinadores">Nuestros clientes</h2>
+            <h3 class="subtitulo-patrocinadores">Conoce algunos de nuestros clientes.</h3>
+            <div class="clientes">
+                <div class="cards">
+                    <div class="cardf">
+                        <img class="card-img-top d-flex justify-content-center" src="../../../assets/img/Bancolombia.png" alt="Card image cap">
+                        <h5>BANCOLOMBIA</h5>
+                    </div>
+                    <div class="cardf">
+                        <img class="card-img-top d-flex justify-content-center" src="../../../assets/img/download.png" alt="Card image cap">
+                        <h5>DAVIVIENDA</h5>
+                    </div>
+                    <div class="cardf">
+                        <img class="card-img-top d-flex justify-content-center" src="../../../assets/img/OgirBGk8_400x400.jpg" alt="Card image cap">
+                        <h5>TIGO UNE</h5>
+                    </div>
+                </div>
+
+            </div>
+            <h3 class="subtitulo-patrocinadores especial">Y muchos más clientes...</h3>
+        </div>
+        <div class="sesgoabajo-unico"></div>
+    </section>
+</main>
+
+<footer>
+    <div class="contenedor">
+        <div class="titulo-footer">Contactanos.</div>
+        <div class="subtitulo-footer">Lo apreciamos mucho.</div>
+        <div class="footer">
+            <form action="">
+                <input type="text" placeholder="Nombre">
+                <input type="email" name="" id="" placeholder="Correo Electrónico">
+                <textarea name="" id="" cols="30" rows="10"></textarea>
+                <input type="submit">
+            </form>
+        </div>
+    </div>
+</footer>

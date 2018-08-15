@@ -1,0 +1,67 @@
+<h1 class="text-center p-2"> Regístrate</h1>
+<div class="container p-2">
+    <div class="row">
+        <div class="col-md-12" *ngFor="let i of persona">
+            <form (ngSubmit)="guardar()" #forma="ngForm">
+                <div class="form-group">
+                    <label>Nombre </label>
+                    <input [(ngModel)]="i.nombre" name="nombre" type="text" class="form-control" placeholder="Nombre del Usuario" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Apellidos</label>
+                    <input [(ngModel)]="i.apellidos" name="apellidos" type="text" class="form-control" placeholder="Apellidos" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Correo Electrónico</label>
+                    <input [(ngModel)]="i.correo" name="correo" type="text" class="form-control" placeholder="Correo Electrónico" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Contraseña</label>
+                    <input [(ngModel)]="i.contrasena" name="contraseña" type="text" class="form-control" placeholder="Contraseña" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Telefono</label>
+                    <input [(ngModel)]="i.telefono" name="Telefono" type="text" class="form-control" placeholder="Telefono" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Genero</label>
+                    <input [(ngModel)]="i.genero" name="Genero" type="text" class="form-control" placeholder="Genero" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Rol</label>
+                    <input [(ngModel)]="i.rol" name="Rol" type="text" class="form-control" placeholder="Rol" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Identificación</label>
+                    <input [(ngModel)]="i.id" name="Identificación" type="text" class="form-control" placeholder="Identificacion" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Estado</label>
+                    <input [(ngModel)]="i.estado" name="Estado" type="text" class="form-control" placeholder="Estado" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Token</label>
+                    <input [(ngModel)]="i.token" name="token" type="text" class="form-control" placeholder="Token" required>
+                </div>
+
+                <div class="form-group">
+                    <label>AdminKey</label>
+                    <input [(ngModel)]="i.adminKey" name="adminKey" type="text" class="form-control" placeholder="adminKey" required>
+                </div>
+
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary"> <i class="far fa-save"> Guardar cambios</i></button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

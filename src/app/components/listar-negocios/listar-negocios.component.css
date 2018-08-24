@@ -1,0 +1,14 @@
+body {
+    background: -webkit-radial-gradient(right, #ffffffd3, #ffffff)
+}
+
+.texto {
+    padding: 20px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    text-align: center;
+}
+
+h1 {
+    font-display: inherit;
+    font-weight: 300;
+}

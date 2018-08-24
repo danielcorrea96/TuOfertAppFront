@@ -21,7 +21,7 @@ export class RegistrarseComponent implements OnInit {
             rol: '',
             estado: '',
             token: '',
-            adminKey: ''
+            adminKey: 'a'
   };
 
   persona: any[] = [this.prueba2];

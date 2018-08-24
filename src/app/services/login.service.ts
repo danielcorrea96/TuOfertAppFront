@@ -7,11 +7,15 @@ import { Observable } from 'rxjs';
 })
 export class LoginService {
   LoginURL = 'http://localhost:8090/personas/login';
+
+  public user: any = {};
   constructor(private http: HttpClient) {
-    console.log('Hola desde login');
+    console.log('LOGIN');
+
    }
 
    postLogin( login: any ): Observable<any> {
     return this.http.post(this.LoginURL, login);
   }
+
 }

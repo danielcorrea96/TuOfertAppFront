@@ -1,0 +1,29 @@
+<section>
+    <br>
+    <h1 class="text-center">Bienvenido {{ user.name }}</h1>
+    <div class="ubicar">
+        <button class="btn btn-danger" (click)="signOut()" routerLink="/bienvenidos"> SALIR</button>
+    </div>
+
+
+    <div class="d-flex justify-content-md-center back">
+        <div class="col-2 col-md-2 ">
+            <img src="{{user.image}}" class="imagen" alt=""> <br>
+
+        </div>
+    </div>
+    <div class="justify-content-between p-2">
+
+    </div>
+    <div class="col-md-6">
+        <div class="card p-2" *ngFor="let i of datosim" style="width: 18rem;">
+            <img class="card-img-top" src="../../../assets/img/1.jpg" alt="Card image cap">
+            <div class="card-body text-center">
+                <h5 class="card-title">{{ i.producto }}</h5>
+                <h5 class="card-text">Valor: ${{ i.valor }} </h5>
+                <small class="card-title">{{ i.detalle }}</small><br>
+                <button class="btn btn-outline-info p-1">UBICAR OFERTA</button>
+            </div>
+        </div>
+    </div>
+</section>

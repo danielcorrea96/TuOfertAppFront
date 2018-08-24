@@ -1,33 +1,49 @@
 <header>
-    <div class="container">
-        <div class="row">
-            <div class="col p-2">
-                <div class="cont-login p-2">
+    <div class="container-dos">
+        <div class="row d-flex justify-content-center">
+            <div class="col-6">
+                <div class="content-logo">
+                    <div class="logo">
+                        <img src="../../../assets/img/logo.png" alt="" height="150%" width="150%">
+
+                        <!-- <button routerLink="/registrarse" class="boton"> Regístrate... </button> -->
+                    </div>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="cont-login p-3">
                     <div class="content-login">
-                        <div class="texto-bienv p-3">
+                        <div class="texto-bienv p-2">
+
                             <h4>Todas las ofertas de la ciudad al alcance de tú mano</h4>
                         </div>
-                        <div *ngFor="let i of persona">
+                        <div *ngFor="let i of persona" class="p-2">
+                            <br>
                             <form class="container d-flex justify-content-center" (ngSubmit)="enviar()" #forma="ngForm">
                                 <div class="form-group p-2">
-                                    <input [(ngModel)]="i.correo" style="background-color:transparent;" name="correo" type="emailf" class="form-control" placeholder="Correo Electrónico" required>
+                                    <input [(ngModel)]="i.correo" style="background-color:transparent;" name="correo" type="emailf" id="correo1" class="form-control" placeholder="Correo Electrónico" required>
+                                    <span style="color:red" *ngIf="banderac">Correo no registrado</span>
                                 </div>
                                 <div class="form-group p-2">
-                                    <input [(ngModel)]="i.contrasena" style="background-color:transparent;" name="contrasena" type="password" class="form-control" placeholder="Contraseña" required>
+                                    <input [(ngModel)]="i.contrasena" style="background-color:transparent;" name="contrasena" id="contrasena1" type="password" class="form-control" placeholder="Contraseña" required>
+                                    <span style="color:red" *ngIf="banderad">Contraseña incorrecta.</span>
                                 </div>
+                                <br><br><br>
                                 <button style="background-color:transparent;" class="boton p-2" type="submit">Entrar</button>
+
                             </form>
+                            <br>
+                            <button class="btn btn-danger m-2 p-1 w-1" (click)="socialSignIn('google')"><i class="fab fa-google grande color2"></i></button>
+                            <button class="btn btn-primary m-2 p-1 w-1" (click)="socialSignIn('facebook')"> <i class="fab fa-facebook grande color1"></i></button>
+                            <br>
+                            <a class="p-2" style="color:white" routerLink="/registrarse">¿No tienes cuenta? Regístrate...</a>
+
+                            <br><br>
+
                         </div>
                     </div>
                     <div>
                     </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="textos">
-                    <h1 class="titulo"> <img src="../../../assets/img/logo.png" alt="" height="50%" width="50%"></h1>
-                    <h3 class="subtitulo"></h3>
-                    <!-- <button routerLink="/registrarse" class="boton"> Regístrate... </button> -->
                 </div>
             </div>
         </div>
@@ -127,4 +143,4 @@
             </form>
         </div>
     </div>
-</footer>
+</footer>s

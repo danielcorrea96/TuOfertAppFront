@@ -1,0 +1,20 @@
+<aside>
+    <ul> <br><br><br>
+        <li><a style="color:whitesmoke" (click)="switchContainer('1')">Perfil</a></li>
+        <li><a style="color:whitesmoke" (click)="switchContainer('2')">Registra Negocios</a></li>
+        <li><a style="color:whitesmoke" (click)="switchContainer('4')">Mira tus Negocios</a></li>
+        <li><a style="color:whitesmoke" (click)="switchContainer('3')">Más información</a></li>
+    </ul>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <footer><img src="http://galeon.hispavista.com/accesible/img/Grac" height="50px" width="220px" alt=""></footer>
+
+</aside>
+<section>
+    <div [ngSwitch]="currentContainer">
+        <app-perfil *ngSwitchCase="'perfil'"></app-perfil>
+            <app-registra-negocios *ngSwitchCase="'registronegocio'"></app-registra-negocios>
+            <app-listar-negocios *ngSwitchCase="'listarnegocio'"></app-listar-negocios>
+            <app-informacion *ngSwitchCase="'informacion'"></app-informacion>
+
+    </div>
+</section>

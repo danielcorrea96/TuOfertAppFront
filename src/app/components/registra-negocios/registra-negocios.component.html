@@ -1,0 +1,51 @@
+<body>
+    <div class="fondo">
+        <div class="container-form">
+            <div class="imag">
+                <img src="../../../assets/img/burger-icon.png" alt="IMG">
+            </div>
+            <form class="formu" (ngSubmit)="guardarnegocio()" *ngFor="let i of nego" #forma="ngForm">
+                <h1 class="formu-titulo">
+                    Regístra tus Negocios
+                </h1>
+                <div class="wrap-input1 validate-input ">
+                    <input [(ngModel)]="i.nombreempresa" class="input1 " type="text " name="nombreempresa " placeholder="Nombre de Negocio ">
+                </div>
+                <div class="wrap-input1 validate-input ">
+                    <select class="input1 " name="tiponegocio" type="text " id="selector1" placeholder="Tipo de Negocio " [(ngModel)]="i.tiponegocio" [ngModelOptions]="{standalone: true}">
+                            <option>RESTAURANTES</option>
+                            <option>FERRETERIAS</option>
+                            <option>COMIDAS RAPIDAS</option>
+                            <option>BARES</option>
+                            <option>OTROS</option>
+                    </select>
+
+                </div>
+                <div class="wrap-input1 validate-input ">
+                    <input [(ngModel)]="i.idnegocio" class="input1 " type="text " name="idnegocio " placeholder="Identificación Negocio ">
+                </div>
+                <div class="wrap-input1 validate-input ">
+                    <input [(ngModel)]="i.nit " class="input1 " type="text " name="nit " placeholder="Nit ">
+                </div>
+                <div class="wrap-input1 validate-input ">
+                    <input [(ngModel)]="i.foto " class="input1 " type="text " name="foto " placeholder="Foto ">
+                </div>
+                <div class="wrap-input1 validate-input ">
+                    <input [(ngModel)]="i.ubicacion " class="input1 " type="text " name="ubicacion " placeholder="Ubicación ">
+                </div>
+                <div class="wrap-input1 validate-input ">
+                    <input [(ngModel)]="i.correoempresa " class="input1 " type="text " name="correoempresa" placeholder="Correo Empresa ">
+                </div>
+                <div class="wrap-input1 validate-input ">
+                    <input [(ngModel)]="i.detalle " class="input1 " type="text " name="detalle " placeholder="Detalle ">
+                </div>
+                <div class="container-contact100-form-btn ">
+                    <button type="submit " class="contact100-form-btn ">
+						Enviar
+					</button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</body>

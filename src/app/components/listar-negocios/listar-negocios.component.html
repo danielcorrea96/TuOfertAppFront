@@ -1,0 +1,118 @@
+<body>
+    <h1 class="texto">BIENVENIDO A TUS NEGOCIOS</h1>
+    <div class="container">
+        <table class="table table-hover" style="background: rgba(240, 237, 237, 0.315) ; border-radius: 10px;">
+            <thead class="text-center justify-content-md-center">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">NOMBRE DE EMPRESA</th>
+                    <th scope="col">TIPO DE NEGOCIO</th>
+                    <th scope="col">CORREO</th>
+                    <th scope="col">ID ADMIN</th>
+                    <th scope="col">FOTO</th>
+                    <th scope="col">NIT</th>
+                    <th scope="col">UBICACION</th>
+                    <th scope="col">ID NEGOCIO</th>
+                    <th scope="col">DETALLE</th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody class="text-center justify-content-md-center">
+                <tr *ngFor="let i of data; let k=index">
+                    <th scope="row">{{ k + 1 }}</th>
+                    <td>{{ i.nombreempresa }}</td>
+                    <td>{{ i.tiponegocio }}</td>
+                    <td>{{ i.correoempresa }}</td>
+                    <td>{{ i.idadmin }}</td>
+                    <td>{{ i.foto }}</td>
+                    <td>{{ i.nit }}</td>
+                    <td>{{ i.ubicacion }}</td>
+                    <td>{{ i.idnegocio }}</td>
+                    <td>{{ i.detalle }}</td>
+                    <td>
+                        <!-- Button trigger modal -->
+                        <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#exampleModalCenter">
+                            <i class="fas fa-times"></i>
+                      </button>
+
+                    </td>
+                    <td><button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap"><i class="fas fa-edit"></i></button>
+
+                    </td>
+                    <!-- Modal Editar -->
+                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title text-center" id="exampleModalLabel">EDITA TÚ NEGOCIO</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                  </button>
+                                </div>
+                                <div class="modal-body">
+                                    <form #forma="ngForm" *ngFor="let i of nego">
+                                        <div class="form-group">
+                                            <input [(ngModel)]="i.nombreempresa" name="nombreempresa " type="text" class="form-control" placeholder="Nombre Empresa">
+                                        </div>
+                                        <div class="form-group">
+                                            <input [(ngModel)]="i.tiponegocio" name="tiponegocio " type="text" class="form-control" placeholder="Tipo de negocio">
+                                        </div>
+                                        <div class="form-group">
+                                            <input [(ngModel)]="i.idnegocio" name="idnegocio " value="" type="text" class="form-control" placeholder="ID Negocio">
+                                        </div>
+                                        <div class="form-group">
+                                            <input [(ngModel)]="i.nit " name="nit " type="text" class="form-control" placeholder="Nit">
+                                        </div>
+                                        <div class="form-group">
+                                            <input [(ngModel)]="i.foto " name="foto " type="text" class="form-control" placeholder="Foto">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <input [(ngModel)]="i.ubicacion " name="ubicacion " type="text" class="form-control" placeholder="Ubicación">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <input [(ngModel)]="i.correoempresa " name="correoempresa" type="text" class="form-control" placeholder="Correo Empresa">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <input [(ngModel)]="i.detalle " name="detalle" type="text" class="form-control" placeholder="Detalle">
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                                            <button type="submit" class="btn btn-success" (click)="actualizarNegocio()" data-dismiss="modal">Editar</button>
+                                        </div>
+                                    </form>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Modal Eliminar -->
+                    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalCenterTitle">¿Seguro que desea eliminar su negocio?</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                      <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    Puede eliminar su negocio.
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                                    <button type="button" class="btn btn-success" (click)="borrarNego(i.idnegocio)" data-dismiss="modal">OK</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+</body>

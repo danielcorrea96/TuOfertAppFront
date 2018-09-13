@@ -1,29 +1,88 @@
-<section>
-    <br>
-    <h1 class="text-center">Bienvenido {{ user.name }}</h1>
-    <div class="ubicar">
-        <button class="btn btn-danger" (click)="signOut()" routerLink="/bienvenidos"> SALIR</button>
-    </div>
+<div class="pos-f-t">
+    <div class="collapse" id="navbarToggleExternalContent">
+        <div class="bg-dark p-3">
+            <div class="row">
+                <div class="col-6 col-md-6 col-lg-6 col-xl-6 col-sm-6 text-left">
+                    <form style="color: white; font-weight: 200;">
+                        <h1 style="font-size: 15px;" class="p-1">Tipo de negocio</h1>
+                        <input (change)="aplicar(value1.value); banderaNegocio()" type="checkbox" name="RESTAURANTES" value="RESTAURANTES" #value1> RESTAURANTES <br>
+                        <input (change)="aplicar(value2.value); banderaNegocio()" type="checkbox" name="BARES" value="BARES" #value2> BARES<br>
+                        <input (change)="aplicar(value3.value); banderaNegocio()" type="checkbox" name="OTROS" value="OTROS" #value3> OTROS<br>
+                        <input (change)="aplicar(value4.value); banderaNegocio()" type="checkbox" name="COMIDAS RAPIDAS" value="COMIDAS RAPIDAS" #value4> COMIDAS RAPIDAS<br>
+                        <input (change)="aplicar(value5.value); banderaNegocio()" type="checkbox" name="FERRETERIAS" value="FERRETERIAS" #value5> FERRETERIAS<br>
+                    </form>
+                </div>
+                <div class="col-6 col-md-6 col-lg-6 col-xl-6 col-sm-6" style="color: white; font-weight: 200;" *ngIf="filtor">
+                    <h1 style="font-size: 15px" class="p-1">Tipo de Oferta</h1>
+                    <div class="form-group">
+                        <input (change)="aplicar(value9.value); filtroOfer1 = !filtroOfer1" type="checkbox" name="PROMOCION" value="PROMOCION" #value9>Promoción<br>
+                        <input (change)="aplicar(value10.value); filtroOfer2 = !filtroOfer2" type="checkbox" name="DESCUENTO" value="DESCUENTO" #value10>Descuento<br>
 
+                    </div>
 
-    <div class="d-flex justify-content-md-center back">
-        <div class="col-2 col-md-2 ">
-            <img src="{{user.image}}" class="imagen" alt=""> <br>
-
-        </div>
-    </div>
-    <div class="justify-content-between p-2">
-
-    </div>
-    <div class="col-md-6">
-        <div class="card p-2" *ngFor="let i of datosim" style="width: 18rem;">
-            <img class="card-img-top" src="../../../assets/img/1.jpg" alt="Card image cap">
-            <div class="card-body text-center">
-                <h5 class="card-title">{{ i.producto }}</h5>
-                <h5 class="card-text">Valor: ${{ i.valor }} </h5>
-                <small class="card-title">{{ i.detalle }}</small><br>
-                <button class="btn btn-outline-info p-1">UBICAR OFERTA</button>
+                </div>
             </div>
         </div>
     </div>
+    <nav class="navbar navbar-dark bg-dark p-2">
+        <h1 style="color: white; font-weight: 200; font-size: 20px">Aplica Filtros</h1>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </nav>
+</div>
+<section>
+    <mat-drawer-container class="example-container" autosize>
+        <div class="col-md-12 col-12 col-xl-12 col-lg-12">
+            <agm-map [latitude]="lat" [longitude]="lng" [zoom]="15">
+                <agm-marker *ngFor="let i of negociosM" [latitude]="+i.latitud" [longitude]="+i.longitud">
+                    <agm-info-window>
+                        <strong>{{i.nombreempresa}}</strong>
+                        <br>
+                        <p>{{i.tiponegocio }}</p>
+                        <p>{{i.ubicacion }}</p>
+                        <div class="p-2">
+                            <button mat-raised-button (click)="drawer.toggle()" (click)="cargarOfertas(i.idnegocio)" (click)="getXId(i.idnegocio) " color="primary">Ver más</button>
+                        </div>
+                    </agm-info-window>
+                </agm-marker>
+            </agm-map>
+        </div>
+
+        <mat-drawer #drawer class="example-sidenav" mode="side">
+            <!-- <div class="col-12 col-md-12 col-lg-12 col-xl-12 col-sm-12"> -->
+            <div class="image2 d-flex justify-content-center" *ngFor="let k of Info; let i=index">
+                <img src="{{k.foto}}" alt="">
+            </div>
+            <!-- </div> -->
+            <div class="text-center" *ngFor="let i of Info">
+                <h1 style="font-size: 30px" class="p-3 text-center"></h1>
+                <h4>{{i.nombreempresa}}</h4>
+                <h5>{{i.tipodenegocio}}</h5>
+                <h5>{{i.ubicacion}}</h5>
+                <small>{{i.correoempresa}}</small>
+                <p></p>
+                <p *ngIf="showFiller"></p>
+                <br>
+            </div>
+            <div class="col-12 col-md-12 col-lg-12 col-xl-12 col-sm-12   d-flex justify-content-center ">
+                <div class="text-center alinear p-3 m-3" style="vertical-align: middle; display: table-cell;">
+                    <h1 style=" font-family: sans-serif; font-size: 20px; font-weight: 300;">¡OFERTAS!</h1>
+                    <div class="card p-3 m-3" *ngFor="let i of ofertas2" style="width: 18rem;">
+                        <img class="card-img-top p-2" src="{{i.foto }}" style="height: 180px; width: 250px; border-radius: 20px" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">{{i.producto}}</h5>
+                            <p>Tipo de oferta: <br> {{ i.tipodeoferta }}</p>
+                            <h6>Valor: ${{i.valor}}</h6>
+                            <p>{{ i.detalle }}</p>
+                            <!-- <p>Descuento: {{ i.descuento }}%</p> -->
+                            <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
+                            <small>Fecha Inicio: {{i.fechainicio | date: 'MMM d, y'}} </small> <br>
+                            <small>Fecha Final: {{i.fechafinal | date: 'MMM d, y'}} </small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </mat-drawer>
+    </mat-drawer-container>
 </section>

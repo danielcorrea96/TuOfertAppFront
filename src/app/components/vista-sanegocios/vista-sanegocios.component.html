@@ -1,0 +1,115 @@
+<header>
+    <div class="text-center p-2">
+        <h1>NEGOCIOS REGISTRADOS</h1>
+        <div class="row">
+            <div class="container p-2 ">
+                <table class="table table-hover" style="background: rgba(240, 237, 237, 0.315) ; border-radius: 30px;">
+                    <thead class="text-center justify-content-md-center">
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">NOMBRE DE EMPRESA</th>
+                            <th scope="col">TIPO DE NEGOCIO</th>
+                            <th scope="col">UBICACION</th>
+                            <th scope="col">NIT</th>
+                            <th scope="col">ID DE NEGOCIO</th>
+                            <th scope="col">ID DE ADMINISTRADOR</th>
+                            <th scope="col">CORREO ELECTRÓNICOO</th>
+                            <th scope="col">DETALLE</th>
+
+                            <th scope="col"></th>
+                            <th scope="col"></th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-center justify-content-md-center">
+                        <tr *ngFor="let i of datos">
+                            <th scope="row"></th>
+                            <td>{{i.nombreempresa}}</td>
+                            <td>{{ i.tiponegocio }}</td>
+                            <td>{{i.ubicacion}}</td>
+                            <td>{{i.nit}}</td>
+                            <td>{{i.idnegocio}}</td>
+                            <td>{{i.idadmin}}</td>
+                            <td>{{i.correoempresa}}</td>
+                            <td>{{ i.detalle }}</td>
+
+                            <td>
+                                <!-- Button trigger modal -->
+                                <button type="button" class="btn btn-danger w-2 btn-sm" (click)="borrarNego(i.idnegocio)">
+                            <i class="fas fa-times"></i>
+                      </button>
+
+                            </td>
+                            <td><button type="button" (click)="enviar(i.idnegocio)" class="btn btn-primary w-2 btn-sm" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap"><i class="fas fa-edit"></i></button>
+
+                            </td>
+                            <!-- Modal Editar -->
+                            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title text-center" id="exampleModalLabel">EDITA TÚ NEGOCIO</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                  </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form #forma="ngForm" *ngFor="let k of nego">
+                                                <div class="form-group">
+                                                    <input [(ngModel)]="k.nombreempresa" name="nombreempresa " type="text" class="form-control" placeholder="Nombre Empresa">
+                                                </div>
+                                                <div class="form-group">
+                                                    <select class="form-control " name="tiponegocio" type="text " id="selector1" placeholder="Tipo de Negocio " [(ngModel)]="k.tiponegocio" [ngModelOptions]="{standalone: true}">
+                                                        <option>RESTAURANTES</option>
+                                                        <option>FERRETERIAS</option>
+                                                        <option>COMIDAS RAPIDAS</option>
+                                                        <option>BARES</option>
+                                                        <option>OTROS</option>
+                                                </select>
+                                                </div>
+
+                                                <input type="hidden" id="txtLatitud" [(ngModel)]="latitud" name="latitud" value="" #valor1>
+
+                                                <input type="hidden" id="txtLongitud" [(ngModel)]="longitud" name="longitud" value="" #valor2>
+                                                <div class="form-group">
+                                                    <input [(ngModel)]="k.idadmin" name="idadmin " value="" type="text" class="form-control" placeholder="ID Admin">
+                                                </div>
+                                                <div class="form-group">
+                                                    <input [(ngModel)]="k.idnegocio" name="idnegocio" value="" type="text" class="form-control" placeholder="ID Negocio">
+                                                </div>
+                                                <div class="form-group">
+                                                    <input [(ngModel)]="k.nit " name="nit " type="text" class="form-control" placeholder="Nit">
+                                                </div>
+                                                <div class="form-group ">
+                                                    <label>Foto de tú negocio</label><br>
+                                                    <input type="file" (change)="upload($event)" style="border-radius: 30px;" name="foto " placeholder="Foto ">
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <input onchange="coordenadas()" [(ngModel)]="k.ubicacion " name="ubicacion " id="ubicacion" type="text" class="form-control" placeholder="Ubicación">
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <input [(ngModel)]="k.correoempresa " name="correoempresa" type="text" class="form-control" placeholder="Correo Empresa">
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <input [(ngModel)]="k.detalle " name="detalle" type="text" class="form-control" placeholder="Detalle">
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                                                    <button type="submit" class="btn btn-success" (click)="mandarDatos(valor1.value, valor2.value)" (click)="actualizarNegocio()" data-dismiss="modal">Editar</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+
+    </div>
+</header>

@@ -2,8 +2,40 @@ section {
     width: inherit;
 }
 
-h1 {
+* {
+    padding: 0;
+    margin: 0;
+}
+
+h1,
+h4,
+h5 {
     font-weight: 300;
+}
+
+mat-slider {
+    width: 300px;
+}
+
+.alinear {
+    display: flex;
+    /* justify-content: center;
+    align-content: center; */
+    flex-direction: column;
+}
+
+.card {
+    position: relative;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0, 0, 0, .125);
+    border-radius: 20px;
 }
 
 .imagen {
@@ -18,4 +50,53 @@ h1 {
 .ubicar {
     justify-content: right;
     align-content: space-between;
+}
+
+agm-map {
+    height: 690px;
+}
+
+.example-container {
+    width: auto;
+    height: auto;
+}
+
+.example-sidenav-content {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.example-sidenav {
+    padding: 0px;
+}
+
+.image2 {
+    justify-content: center;
+    align-content: center;
+}
+
+img {
+    padding: 0;
+    height: 250px;
+    width: 450px;
+}
+
+.mat-drawer {
+    position: relative;
+    /* z-index: 4; */
+    display: block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    z-index: 0;
+    outline: 0;
+    /* box-sizing: content-box; */
+    overflow-y: 0;
+    transform: translate3d(-100%, 0, 0);
+}
+
+.example-sidenav[_ngcontent-c2] {
+    padding: 0px;
 }

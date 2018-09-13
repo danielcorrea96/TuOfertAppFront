@@ -1,0 +1,12 @@
+imge {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+}
+
+img {
+    height: 500px;
+    width: 100px;
+    min-width: 350px;
+    line-height: 250px;
+}

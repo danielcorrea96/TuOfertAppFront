@@ -1,0 +1,45 @@
+<header>
+    <h1 class="d-flex justify-content-center p-2">EDITA PERFIL</h1>
+    <div class="d-flex justify-content-center col-12 col-md-12 col-lg-12 col-xl-12 ">
+        <div class="cont-editar">
+            <div class="contenedor-editar">
+                <form #forma="ngForm" class="p-3" *ngFor="let i of persona3">
+                    <div class="form-group">
+                        <input [(ngModel)]="i.nombre" name="nombre " type="text" class="form-control" placeholder="Nombre">
+                    </div>
+                    <div class="form-group">
+                        <input [(ngModel)]="i.apellidos" name="apellidos " type="text" class="form-control" placeholder="Apellidos">
+                    </div>
+                    <div class="form-group">
+                        <input [(ngModel)]="i.correo" name="correo " value="" type="text" class="form-control" placeholder="Correo Electrónico">
+                    </div>
+                    <div class="form-group">
+                        <input [(ngModel)]="i.contrasena " name="contasena " type="text" class="form-control" placeholder="Contraseña">
+                    </div>
+                    <div class="form-group">
+                        <input [(ngModel)]="i.telefono" name="telefono " type="text" class="form-control" placeholder="Telefono">
+                    </div>
+
+                    <div class="form-group">
+                        <input [(ngModel)]="i.genero " name="genero " type="text" class="form-control" placeholder="Genero">
+                    </div>
+
+                    <div class="form-group">
+                        <select class="form-control" name="rol" type="text " id="selector1" placeholder="Rol " [(ngModel)]="i.rol" [ngModelOptions]="{standalone: true}">
+                      <option>Administrador</option>
+                      <option>Usuario</option>                
+              </select>
+                    </div>
+                    <div class="form-group">
+                        <input [(ngModel)]="i.estado " name="estado" type="text" class="form-control" placeholder="Estado">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-success" (click)="EditarT()">Editar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+
+    </div>
+</header>

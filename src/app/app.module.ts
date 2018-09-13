@@ -28,6 +28,14 @@ import { NegociosService } from './services/negocios.service';
 import { ListarNegociosComponent } from './components/listar-negocios/listar-negocios.component';
 
 
+// MAPA GOOGLE
+import { AgmCoreModule } from '@agm/core';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {MatButtonModule} from '@angular/material/button';
+import {MatSliderModule} from '@angular/material/slider';
+
+
 // LOGIN GOOGLE //
 import {
   SocialLoginModule,
@@ -35,6 +43,23 @@ import {
   GoogleLoginProvider,
   FacebookLoginProvider,
 } from 'angular5-social-login';
+import { TunegocioComponent } from './components/tunegocio/tunegocio.component';
+import { VistaSAAdminComponent } from './components/vista-saadmin/vista-saadmin.component';
+import { VistaSAUsuarioComponent } from './components/vista-sausuario/vista-sausuario.component';
+import { VistaSANegociosComponent } from './components/vista-sanegocios/vista-sanegocios.component';
+import { FuncionesSuperAService } from './services/funciones-super-a.service';
+import { EditarPersonasComponent } from './components/editar-personas/editar-personas.component';
+import { VistaSAOfertasComponent } from './components/vista-saofertas/vista-saofertas.component';
+import { EditarOfertasComponent } from './components/editar-ofertas/editar-ofertas.component';
+
+// Firebase
+import { AngularFireModule } from 'angularfire2';
+import { environment } from '../environments/environment';
+import { AngularFirestoreModule } from 'angularfire2/firestore';
+import { AngularFireStorageModule } from 'angularfire2/storage';
+import { AngularFireAuthModule } from 'angularfire2/auth';
+import { NoimagePipe } from './pipes/noimage.pipe';
+
 
 // Configs
 export function getAuthServiceConfigs() {
@@ -67,7 +92,15 @@ export function getAuthServiceConfigs() {
     PerfilComponent,
     RegistraNegociosComponent,
     InformacionComponent,
-    ListarNegociosComponent
+    ListarNegociosComponent,
+    TunegocioComponent,
+    VistaSAAdminComponent,
+    VistaSAUsuarioComponent,
+    VistaSANegociosComponent,
+    EditarPersonasComponent,
+    VistaSAOfertasComponent,
+    EditarOfertasComponent,
+    NoimagePipe
 
   ],
   imports: [
@@ -77,12 +110,24 @@ export function getAuthServiceConfigs() {
     HttpModule,
     HttpClientModule,
     FormsModule,
-    SocialLoginModule
+    SocialLoginModule,
+    MatSidenavModule,
+    BrowserAnimationsModule,
+    MatButtonModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule, // imports firebase/firestore, only needed for database features
+    AngularFireAuthModule, // imports firebase/auth, only needed for auth features,
+    AngularFireStorageModule, // imports firebase/storage only needed for storage features
+    MatSliderModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyA-HXVa2jtkGfKtIJwisxgC46RaWqC1xuI'
+    })
   ],
   providers: [
     RegistroService,
     LoginService,
     NegociosService,
+    FuncionesSuperAService,
     {
       provide: AuthServiceConfig,
       useFactory: getAuthServiceConfigs

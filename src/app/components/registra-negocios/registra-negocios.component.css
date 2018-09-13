@@ -93,6 +93,10 @@ select {
     padding: 15px;
 }
 
+.butto {
+    border-radius: 20px;
+}
+
 input {
     outline: none;
     border: none;

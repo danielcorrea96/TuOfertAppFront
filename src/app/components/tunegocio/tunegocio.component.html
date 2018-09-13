@@ -1,0 +1,204 @@
+<app-navbar></app-navbar>
+<header>
+    <div class="col-md-12 col-12 col-xl-12 col-lg-12">
+        <div class="cont-logo d-flex justify-content-center">
+            <div class="cont-bac" *ngFor="let i of data">
+                <br>
+                <div class="logo">
+                    <img src="../../../assets/img/logo.png" alt="" height="40%" width="40%">
+                </div>
+                <div class="texto">
+                    <h1>Bienvenido {{ i.nombreempresa }}</h1>
+                </div>
+                <h4 class="p-2">¿Qué deseas hacer?</h4>
+                <h6 class="p-2">Ubicación de tú negocio: {{ i.ubicacion }}</h6>
+                <h6 class="p-2">Detalle: {{ i.detalle }}</h6>
+                <button class="boton p-2 w-25 m-3" style="background-color:rgba(161, 160, 165, 0.103);" data-toggle="modal" data-target="#exampleModal">Regístra</button>
+                <button class="boton p-2 w-25" style="background-color:rgba(161, 160, 165, 0.103);" data-toggle="modal" data-target="#TusOfertas">Tus Ofertas</button>
+                <br> <br> <br>
+            </div>
+        </div>
+    </div>
+    <!-- Modal Registro -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="text-center" id="exampleModalLabel">REGISTRA TUS OFERTAS</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">                    
+                  </button>
+                </div>
+                <div class="col-12 col-lg-12 col-md-12 col-xl-12">
+                    <div class="modal-body">
+                        <form #forma="ngForm" *ngFor="let i of persona">
+                            <div class="form-group">
+                                <input [(ngModel)]="i.producto" name="producto" type="text" class="form-control" placeholder="Producto">
+                            </div>
+
+                            <div class="form-group">
+                                <select class="form-control" name="tipodeoferta" type="text " id="tipodeoferta" placeholder="Tipo de oferta" [(ngModel)]="i.tipodeoferta" [ngModelOptions]="{standalone: true}">
+                            <option>PROMOCION</option>
+                            <option>DESCUENTO</option>
+                    </select>
+
+                            </div>
+                            <!-- <div class="form-group">
+                                <input name="idnegocio " type="text" class="form-control" placeholder="ID Negocio">
+                            </div> -->
+                            <div class="form-group">
+                                <input [(ngModel)]="i.id" name="id " value="" type="text" class="form-control" placeholder="ID Oferta">
+                            </div>
+                            <div class="form-group">
+                                <input [(ngModel)]="i.fechainicio" name="fechainicio " type="date" class="form-control" placeholder="Fecha de Inicio">
+                            </div>
+
+                            <div class="form-group">
+                                <input [(ngModel)]="i.fechafinal" name="fechafinal " type="date" class="form-control" placeholder="Fecha Final">
+                            </div>
+
+                            <div class="form-group">
+                                <input [(ngModel)]="i.valor" name="valor" type="text" class="form-control" placeholder="Valor">
+                            </div>
+
+                            <div class="form-group">
+                                <input [(ngModel)]="i.descuento" name="descuento" type="text" class="form-control" placeholder="Descuento (Ej. 10, 50 o 2x1 3x1)">
+                            </div>
+                            <div class="form-group">
+                                <input [(ngModel)]="i.detalle" name="detalle" type="text" class="form-control" placeholder="Detalle">
+                            </div>
+                            <div class="form-group">
+                                <label style="font-weight: 100; font-size: 15px; color: black">Añade foto de tù oferta</label>
+                                <br>
+                                <input type="file" (change)="upload($event)" style="border-radius: 30px;" name="foto " placeholder="Foto ">
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                                <button type="submit" class="btn btn-success" data-dismiss="modal" (click)=" guardar()">Enviar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Tus Ofertas -->
+    <div class="modal fade" *ngFor="let i of data2" id="TusOfertas" tabindex="-1" role="dialog" aria-labelledby="TusOfertasLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="TusOfertasLabel">TUS OFERTAS</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+                </div>
+                <div class="modal-body" *ngFor="let i of data2">
+                    <div class="row">
+                        <div class="col-8 col-md-8 col-lg-8 col-xl-8">
+                            <div class="card" style="width: 10rem; height: 10rem;">
+                                <img class="card-img-top" src="{{i.foto }}" alt="Card image cap">
+                                <div class="card-body justify-content-center">
+                                    <h5 class="card-title" style="font-size: 20px">{{i.producto}}</h5>
+                                    <h5 class="card-title">ID:#{{i.id}}</h5>
+                                    <small style="color: black">Valor:{{ i.valor }}</small>
+                                    <br>
+                                    <small style="color: black">Vence: {{ i.fechafinal }}</small>
+                                    <br>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-4 col-md-4 col-lg-4 col-xl-4 alinera">
+                            <br><br>
+                            <small style="color: black">Tipo de Oferta: {{ i.tipodeoferta }}</small><br>
+                            <button type="button" (click)="enviar(i.id)" data-toggle="modal" data-target="#EditarOferta" class="btn btn-primary btn-sm"><i class="fas fa-edit"  style="color: rgb(215, 214, 231)"></i></button>
+                            <button type="button" (click)="borrarXId(i.id)" class="btn btn-danger m-2 btn-sm"> <i class="fas fa-trash-alt"  style="color: rgb(121, 49, 49)"></i></button>
+                        </div>
+                        <!-- <div class="col-4 col-md-4 col-lg-4 col-xl-4 ">
+                            <br>
+
+                            <h5 class="text-center p-2">Ubica tú Oferta</h5>
+                            <button class="btn btn-danger btn-block"><i class="fas fa-map-marker-alt" style="color:white"></i></button>
+                        </div> -->
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Editar -->
+    <div class="modal fade" *ngFor="let i of data2" id="EditarOferta" tabindex="-1" role="dialog" aria-labelledby="EditarOfertaLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="text-center" id="EditarOfertaLabel">EDITA TUS OFERTAS</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">                    
+                  </button>
+                </div>
+                <div class="col-12 col-lg-12 col-md-12 col-xl-12">
+                    <div class="modal-body">
+                        <form #forma="ngForm" *ngFor="let i of persona">
+                            <div class="form-group">
+                                <input [(ngModel)]="i.producto" name="producto" type="text" class="form-control" placeholder="Producto">
+                            </div>
+
+                            <div class="form-group">
+                                <select class="form-control" name="tipodeoferta" type="text " id="tipodeoferta" placeholder="Tipo de oferta" [(ngModel)]="i.tipodeoferta" [ngModelOptions]="{standalone: true}">
+                            <option>PROMOCION</option>
+                            <option>DESCUENTO</option>
+                    </select>
+
+                            </div>
+                            <!-- <div class="form-group">
+                                <input name="idnegocio " type="text" class="form-control" placeholder="ID Negocio">
+                            </div> -->
+                            <div class="form-group">
+                                <input [(ngModel)]="i.id" name="id " value="" type="text" class="form-control" placeholder="ID Oferta">
+                            </div>
+
+                            <div class="form-group">
+                                <input [(ngModel)]="i.fechainicio" name="fechainicio " type="date" class="form-control" placeholder="Fecha de Inicio">
+                            </div>
+
+                            <div class="form-group">
+                                <input [(ngModel)]="i.fechafinal" name="fechafinal " type="date" class="form-control" placeholder="Fecha Final">
+                            </div>
+
+                            <div class="form-group">
+                                <input [(ngModel)]="i.valor" name="valor" type="text" class="form-control" placeholder="Valor">
+                            </div>
+
+                            <div class="form-group">
+                                <input [(ngModel)]="i.descuento" name="descuento" type="text" class="form-control" placeholder="Descuento">
+                            </div>
+                            <div class="form-group">
+                                <input [(ngModel)]="i.detalle" name="detalle" type="text" class="form-control" placeholder="Detalle">
+                            </div>
+                            <div class="form-group">
+                                <label style="font-weight: 100; font-size: 15px; color: black">Añade foto de tù oferta</label>
+                                <br>
+                                <input type="file" (change)="upload($event)" style="border-radius: 30px;" name="foto " placeholder="Foto ">
+                            </div>
+
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                                <button type="submit" class="btn btn-success" data-dismiss="modal" (click)="editarOferta(i.id)">Enviar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</header>
+
+<section>
+
+</section>
+<footer>
+
+</footer>

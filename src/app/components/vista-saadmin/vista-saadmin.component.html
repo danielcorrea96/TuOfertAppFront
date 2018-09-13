@@ -1,0 +1,57 @@
+<header>
+    <h1 style="font-weight: 300; font-family: sans-serif;" class="d-flex justify-content-center p-3">
+        ADMINISTRADORES REGISTRADOS
+    </h1>
+    <div class="container">
+        <table class="table table-hover" style="background: rgba(240, 237, 237, 0.315) ; border-radius: 10px;">
+            <thead class="text-center justify-content-md-center">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">NOMBRES</th>
+                    <th scope="col">APELLIDOS</th>
+                    <th scope="col">CORREO</th>
+                    <th scope="col">TELEFONO</th>
+                    <th scope="col">GENERO</th>
+                    <th scope="col">ROL</th>
+                    <th scope="col">ESTADO</th>
+                    <th scope="col">ID</th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody class="text-center justify-content-md-center">
+                <tr *ngFor="let i of datos">
+                    <th scope="row"></th>
+                    <td>{{i.nombre}}</td>
+                    <td>{{ i.apellidos }}</td>
+                    <td>{{i.correo}}</td>
+                    <td>{{i.telefono}}</td>
+                    <td>{{i.genero}}</td>
+                    <td>{{i.rol}}</td>
+                    <td>{{i.estado}}</td>
+                    <td>{{ i.id }}</td>
+                    <td>
+                        <!-- Button trigger modal -->
+                        <button type="button" class="btn btn-danger w-2 btn-sm" (click)="EliminarAdmin(i.id)">
+                          <i class="fas fa-times"></i>
+                    </button>
+
+                    </td>
+                    <td><button type="button" class="btn btn-primary w-2 btn-sm" (click)="Admin(i.id, i.token)"><i class="fas fa-edit"></i></button>
+
+                    </td>
+
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+</header>
+
+<section>
+
+</section>
+
+<footer>
+
+</footer>

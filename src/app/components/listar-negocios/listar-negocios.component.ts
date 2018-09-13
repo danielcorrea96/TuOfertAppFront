@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NegociosService } from '../../services/negocios.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-listar-negocios',
@@ -14,7 +14,7 @@ export class ListarNegociosComponent implements OnInit {
 
 
 
-  constructor(private negocios: NegociosService, private activatedRoute: ActivatedRoute) {
+  constructor(private negocios: NegociosService, private activatedRoute: ActivatedRoute,  private router: Router) {
     this.activatedRoute.params.subscribe(params => {
 
       this.idA = params.id;
@@ -45,8 +45,13 @@ export class ListarNegociosComponent implements OnInit {
   ngOnInit() {
   }
 
+  tunegocio(id: string) {
+    this.router.navigate(['/tunegocio', id ]);
+  }
+
   listarTodo() {
   return this.negocios.getXID(this.idA).subscribe(data => {
+    console.log(data);
     this.data = data.negocios;
     console.log(this.data);
     for (const i of this.data) {

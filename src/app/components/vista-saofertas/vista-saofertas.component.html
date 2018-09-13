@@ -1,0 +1,51 @@
+<header>
+    <div class="text-center p-2">
+        <h1 style="font-weight: 300; font-size: 30px; font-family: sans-serif;">
+            OFERTAS REGISTRADAS
+        </h1>
+        <div class="container p-2">
+            <table class="table table-hover" style="background: rgba(240, 237, 237, 0.315) ; border-radius: 30px;">
+                <thead class="text-center justify-content-md-center">
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">PRODUCTO</th>
+                        <th scope="col">TIPO DE OFERTA</th>
+                        <th scope="col">VALOR</th>
+                        <th scope="col">ID OFERTA</th>
+                        <th scope="col">ID NEGOCIO</th>
+                        <th scope="col">FECHA INICIO</th>
+                        <th scope="col">FECHA FINAL</th>
+                        <th scope="col">DESCUENTO</th>
+                        <th scope="col">DETALLE</th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody class="text-center justify-content-md-center">
+                    <tr *ngFor="let i of datos">
+                        <th scope="row"></th>
+                        <td>{{i.producto}}</td>
+                        <td>{{i.tipodeoferta}}</td>
+                        <td>{{ i.valor }}</td>
+                        <td>{{i.id}}</td>
+                        <td>{{i.idnegocio}}</td>
+                        <td>{{i.fechainicio}}</td>
+                        <td>{{i.fechafinal}}</td>
+                        <td>{{ i.descuento }}</td>
+                        <td>{{ i.detalle }}</td>
+                        <td>
+                            <!-- Button trigger modal -->
+                            <button type="button" class="btn btn-danger w-2 btn-sm" (click)="borrarXId(i.id)">
+                    <i class="fas fa-times"></i>
+              </button>
+                        </td>
+                        <td><button type="button" class="btn btn-primary w-2 btn-sm" (click)="naviga(i.idnegocio)"><i class="fas fa-edit"></i></button>
+
+                        </td>
+
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</header>

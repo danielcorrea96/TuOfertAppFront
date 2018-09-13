@@ -1,0 +1,51 @@
+<app-navbar></app-navbar>
+<header>
+    <div class="text-center">
+        <h1>EDITA OFERTAS</h1>
+        <div class="container">
+            <form #forma="ngForm" *ngFor="let i of persona">
+                <div class="form-group">
+                    <input [(ngModel)]="i.producto" name="producto" type="text" class="form-control" placeholder="Producto">
+                </div>
+                <div class="form-group">
+                    <select class="form-control" name="tipodeoferta" type="text " id="tipodeoferta" placeholder="Tipo de oferta" [(ngModel)]="i.tipodeoferta" [ngModelOptions]="{standalone: true}">
+                    <option>PROMOCION</option>
+                    <option>DESCUENTO</option>
+            </select>
+
+                </div>
+                <!-- <div class="form-group">
+            <input name="idnegocio " type="text" class="form-control" placeholder="ID Negocio">
+              </div> -->
+                <div class="form-group">
+                    <input [(ngModel)]="i.id" name="id " value="" type="text" class="form-control" placeholder="ID Oferta">
+                </div>
+                <div class="form-group ">
+                    <label>Foto de tú negocio</label><br>
+                    <input type="file" (change)="upload($event)" style="border-radius: 30px;" name="foto " placeholder="Foto ">
+                </div>
+                <div class="form-group">
+                    <input [(ngModel)]="i.fechainicio" name="fechainicio " type="date" class="form-control" placeholder="Fecha de Inicio">
+                </div>
+
+                <div class="form-group">
+                    <input [(ngModel)]="i.fechafinal" name="fechafinal " type="date" class="form-control" placeholder="Fecha Final">
+                </div>
+
+                <div class="form-group">
+                    <input [(ngModel)]="i.valor" name="valor" type="text" class="form-control" placeholder="Valor">
+                </div>
+
+                <div class="form-group">
+                    <input [(ngModel)]="i.descuento" name="descuento" type="text" class="form-control" placeholder="Descuento">
+                </div>
+                <div class="form-group">
+                    <input [(ngModel)]="i.detalle" name="detalle" type="text" class="form-control" placeholder="Detalle">
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-success" data-dismiss="modal" (click)="editarOferta(i.id)">Enviar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</header>

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFirestore } from 'angularfire2/firestore';
+import * as firebase from 'firebase';
 
 
 @Component({
@@ -8,6 +10,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class VistaAdministradorComponent implements OnInit {
   public currentContainer: string;
+
   constructor() {
 
 
@@ -15,6 +18,8 @@ export class VistaAdministradorComponent implements OnInit {
 
   ngOnInit() {
   }
+
+
 
   switchContainer(containerName) {
     console.log('Si llama');

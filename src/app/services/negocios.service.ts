@@ -3,6 +3,7 @@ import { HttpClient} from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Http , Headers } from '@angular/http';
 import { map } from 'rxjs/operators';
+import { FileItem } from '../models/file-item';
 
 
 @Injectable({
@@ -13,9 +14,16 @@ export class NegociosService {
   GetTodoURL = 'http://localhost:8091/negocios/listar';
   EliminarURL = 'http://localhost:8091/negocios/eliminar';
   PutURL = 'http://localhost:8091/negocios/editar';
+  ListaURL = 'http://localhost:8091/negocios/listar';
+
   constructor(private http: Http) {
     console.log('Hola desde el servicio negocio.');
    }
+
+  cargarImagenesFirebase(imagenes: FileItem[]) {
+   console.log(imagenes);
+  }
+
   postNegocio ( negocios: any ) {
     const body = JSON.stringify( negocios );
     const headers = new Headers ( {
@@ -26,6 +34,16 @@ export class NegociosService {
       console.log( res.json() );
       return res.json();
     }));
+    }
+
+
+    getTodo() {
+    return this.http.get(this.ListaURL).pipe(map(res => res.json()));
+    }
+
+    getXIDNegocio(id: string ) {
+    const url = `http://localhost:8091/negocios/listar/idnegocio/${ id }`;
+    return this.http.get(url).pipe(map(res => res.json()));
     }
 
     getXID(id: string) {

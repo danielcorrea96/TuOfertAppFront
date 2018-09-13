@@ -3,7 +3,15 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  firebase: {
+    apiKey: 'AIzaSyDRBN4qi0VL4a1Toj8PK9r84zQ1PvfaTTs',
+    authDomain: 'probandofir.firebaseapp.com',
+    databaseURL: 'https://probandofir.firebaseio.com',
+    projectId: 'probandofir',
+    storageBucket: 'probandofir.appspot.com',
+    messagingSenderId: '347125983656'
+  }
 };
 
 /*
@@ -13,3 +21,5 @@ export const environment = {
  * because it will have performance impact when throw error
  */
 // import 'zone.js/dist/zone-error';  // Included with Angular CLI.
+
+

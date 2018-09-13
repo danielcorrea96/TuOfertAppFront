@@ -1,3 +1,50 @@
-<p>
-  vista-super-admin works!
-</p>
+<app-navbar></app-navbar>
+<div class="col-12 col-md-12 col-sm-12 col-lg-12 col-xl-12">
+    <mat-drawer-container class="example-container" autosize>
+
+        <body>
+            <div class="col-12 col-md-12 col-sm-12 col-lg-12 col-xl-12 ">
+                <div class="cont-pro">
+                    <div class="cont-back">
+                        <h1 style="font-size: 45px; color: rgba(0, 0, 0, 0.685)">¿Qué deseas hacer?</h1>
+                        <p>Accede para más información...</p>
+                        <div class="col-12 col-md-12 col-sm-12 col-lg-12 col-xl-12 p-2">
+                            <button type="button" mat-button class="btn-block" (click)="drawer.toggle()">
+                                <i class="fas fa-bars bot"></i>
+                            </button>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </body>
+        <!-- <div class="example-sidenav-content"> -->
+
+        <mat-drawer #drawer class="example-sidenav" mode="side">
+            <div class="col-md-12 col-12 col-lg-12 col-xl-12 col-sm-12 d-flex justify-content-center">
+                <div class="imag">
+                    <img src="https://2016.geneva.wordcamp.org/files/2016/11/s-agence.png?w=240" alt="">
+                </div>
+
+            </div>
+            <div class="texto">
+                <h1>BIENVENIDO SUPER ADMINISTRADOR</h1>
+            </div>
+            <ul>
+                <li><button mat-raised-button color="primary" class="m-2 btn-block" style="border-radius: 50px;">TÚ PERFIL</button></li>
+                <li><button mat-raised-button color="primary" class="m-2 btn-block" style="border-radius: 50px;" routerLink="/vistaSAUsuario">USUARIOS</button></li>
+                <li><button mat-raised-button color="primary" class="m-2 btn-block" style="border-radius: 50px;" routerLink="/vistaSAAdmin">ADMINISTRADORES</button></li>
+                <li><button mat-raised-button color="primary" class="m-2 btn-block" style="border-radius: 50px;" routerLink="/vistaSANegocios">NEGOCIOS REGISTRADOS</button></li>
+                <li><button mat-raised-button color="primary" class="m-2 btn-block" style="border-radius: 50px;" routerLink="/vistaSAOfertas">OFERTAS REGISTRADAS</button></li>
+            </ul>
+
+            <footer class="foot text-center">
+                <br>
+                <p style="color: white; font-weight: 300;">Copyright 2018 Accenture. All rights reserved.</p>
+                <p style="color: white; font-weight: 300;">Desarrollada por Daniel Correa</p>
+            </footer>
+            <!-- <button (click)="showFiller = !showFiller" mat-raised-button>Toggle extra text</button> -->
+        </mat-drawer>
+        <!-- </div> -->
+    </mat-drawer-container>
+</div>

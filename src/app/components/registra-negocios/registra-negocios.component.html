@@ -28,11 +28,16 @@
                     <input [(ngModel)]="i.nit " class="input1 " type="text " name="nit " placeholder="Nit ">
                 </div>
                 <div class="wrap-input1 validate-input ">
-                    <input [(ngModel)]="i.foto " class="input1 " type="text " name="foto " placeholder="Foto ">
+                    <label>Foto de tú negocio</label>
+                    <input type="file" (change)="upload($event)" style="border-radius: 30px;" name="foto " placeholder="Foto ">
                 </div>
                 <div class="wrap-input1 validate-input ">
-                    <input [(ngModel)]="i.ubicacion " class="input1 " type="text " name="ubicacion " placeholder="Ubicación ">
+                    <input onchange="coordenadas()" [(ngModel)]="i.ubicacion " class="input1 " type="text " name="ubicacion" id="ubicacion" placeholder="Ubicación ">
                 </div>
+                <input type="hidden" id="txtLatitud" [(ngModel)]="latitud" name="latitud" value="" #valor1>
+
+                <input type="hidden" id="txtLongitud" [(ngModel)]="longitud" name="longitud" value="" #valor2>
+
                 <div class="wrap-input1 validate-input ">
                     <input [(ngModel)]="i.correoempresa " class="input1 " type="text " name="correoempresa" placeholder="Correo Empresa ">
                 </div>
@@ -40,9 +45,7 @@
                     <input [(ngModel)]="i.detalle " class="input1 " type="text " name="detalle " placeholder="Detalle ">
                 </div>
                 <div class="container-contact100-form-btn ">
-                    <button type="submit " class="contact100-form-btn ">
-						Enviar
-					</button>
+                    <button type="submit " (click)="mandarDatos(valor1.value, valor2.value)" class="contact100-form-btn ">Enviar</button>
                 </div>
             </form>
 

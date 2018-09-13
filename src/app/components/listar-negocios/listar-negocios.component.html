@@ -1,6 +1,6 @@
 <body>
     <h1 class="texto">BIENVENIDO A TUS NEGOCIOS</h1>
-    <div class="container">
+    <div class="col-12 col-md-12 col-lg-12 col-sm-12 col-xl-12">
         <table class="table table-hover" style="background: rgba(240, 237, 237, 0.315) ; border-radius: 10px;">
             <thead class="text-center justify-content-md-center">
                 <tr>
@@ -9,11 +9,12 @@
                     <th scope="col">TIPO DE NEGOCIO</th>
                     <th scope="col">CORREO</th>
                     <th scope="col">ID ADMIN</th>
-                    <th scope="col">FOTO</th>
+
                     <th scope="col">NIT</th>
                     <th scope="col">UBICACION</th>
                     <th scope="col">ID NEGOCIO</th>
                     <th scope="col">DETALLE</th>
+                    <th scope="col"></th>
                     <th scope="col"></th>
                     <th scope="col"></th>
                 </tr>
@@ -25,19 +26,22 @@
                     <td>{{ i.tiponegocio }}</td>
                     <td>{{ i.correoempresa }}</td>
                     <td>{{ i.idadmin }}</td>
-                    <td>{{ i.foto }}</td>
+
                     <td>{{ i.nit }}</td>
                     <td>{{ i.ubicacion }}</td>
                     <td>{{ i.idnegocio }}</td>
                     <td>{{ i.detalle }}</td>
                     <td>
                         <!-- Button trigger modal -->
-                        <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#exampleModalCenter">
+                        <button type="button" class="btn btn-danger w-2 btn-sm" data-toggle="modal" data-target="#exampleModalCenter">
                             <i class="fas fa-times"></i>
                       </button>
 
                     </td>
-                    <td><button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap"><i class="fas fa-edit"></i></button>
+                    <td><button type="button" class="btn btn-primary w-2 btn-sm" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap"><i class="fas fa-edit"></i></button>
+
+                    </td>
+                    <td><button type="button" class="btn btn-success w-2 btn-sm" (click)="tunegocio(i.idnegocio)">Ver más</button>
 
                     </td>
                     <!-- Modal Editar -->

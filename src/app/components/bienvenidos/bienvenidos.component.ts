@@ -22,7 +22,7 @@ export class BienvenidosComponent implements OnInit {
     correo: '',
     contrasena: '',
   };
-
+  prueba23: any;
   persona: any[] = [this.login2];
   login: Object = {
      persona: this.persona
@@ -86,6 +86,7 @@ export class BienvenidosComponent implements OnInit {
   enviar() {
     return  this._login.postLogin(this.login).subscribe(data => {
       // console.log(data.persona);
+      console.log(data);
       for (const i of data.persona) {
           console.log(i.id);
           this.id = i.id;

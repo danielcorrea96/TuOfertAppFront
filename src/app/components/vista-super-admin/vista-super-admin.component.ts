@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./vista-super-admin.component.css']
 })
 export class VistaSuperAdminComponent implements OnInit {
-
+  showFiller = false;
   constructor() { }
 
   ngOnInit() {
